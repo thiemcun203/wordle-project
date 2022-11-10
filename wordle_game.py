@@ -1,6 +1,6 @@
 # Setting randomly a secret_word
 import random
-with open("possible_data.txt","r") as file:
+with open("possible_words.txt","r") as file:
     possible_lst=[]
     for i in file:
         possible_lst.append(i[:5])
@@ -9,7 +9,7 @@ secret_word=random.choice(possible_lst)
 # print(secret_word)
 
 # Input and check the condition of the input
-with open("allowed_data.txt","r") as file:
+with open("allowed_words.txt","r") as file:
     allowed_lst=[]
     for i in file:
         allowed_lst.append(i[:5])
