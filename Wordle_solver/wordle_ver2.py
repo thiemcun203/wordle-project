@@ -403,4 +403,4 @@ def wordlebot_byscore_interface(allowed_words):
         
         i += 1
 
-wordlebot_byscore_interface(ALLOWED_WORDS)
+#wordlebot_byscore_interface(ALLOWED_WORDS)
