@@ -349,7 +349,7 @@ def wordlebot_play(allowed_words,answer):
             break
         valid_words=reduce_allowed_words(valid_words,guess,real_fb)
         i+=1
-    return guess_count
+    return res
 
 def display_score_ranker(allowed_words,actual_fb,guess,num_of_guesses):
     """
