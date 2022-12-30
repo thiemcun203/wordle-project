@@ -325,7 +325,7 @@ def score_ranker(allowed_words,actual_fb,guess,num_of_guesses):
     res=dict()
     for word in allowed_words:
         res[word]=score(space,guess,word,actual_fb,num_of_guesses)
-    res = {k:v for k,v in sorted(res.items(),key=lambda x:x[1],reverse=True)}
+    res = {k:v for k,v in sorted(res.items(),key=lambda x:x[1])}
     return res
 
 def wordlebot_play(allowed_words,answer):
@@ -339,7 +339,7 @@ def wordlebot_play(allowed_words,answer):
         else:
             fb = get_feedback(guess,answer)
             guess_count+=1
-            ranker=score_ranker(valid_words,fb, guess_count+1)
+            ranker=score_ranker(valid_words,fb,guess, guess_count+1)
             guess=list(ranker.keys())[0]
         real_fb=get_feedback(guess,answer)
         if check_win(real_fb)==True:
@@ -398,7 +398,7 @@ def wordlebot_byscore_interface(allowed_words):
         print(">>> Expected entropy: " + str(entropy(guess,valid_words)))
         print("    Actual entropy: " + str(compute_actual_entropy(valid_words,guess,real_feedback)))
         valid_words = reduce_allowed_words(valid_words,guess,real_feedback)
-        display_score_ranker(valid_words,real_feedback,guess,i)
+        display_score_ranker(valid_words,real_feedback,guess,i+1)
         print(">>>> Remaining possibilities: " + str(len(valid_words)) + "\n")
         
         i += 1
