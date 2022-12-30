@@ -332,19 +332,23 @@ def wordlebot_play(allowed_words,answer):
     valid_words=allowed_words
     win=False
     i=guess_count=0
+    res=list()
     while not win:
         if i==0:
             guess='tares'
             guess_count+=1
+            res.append(guess)
         else:
             fb = get_feedback(guess,answer)
             guess_count+=1
             ranker=score_ranker(valid_words,fb,guess, guess_count+1)
             guess=list(ranker.keys())[0]
+            res.append(guess)
         real_fb=get_feedback(guess,answer)
         if check_win(real_fb)==True:
             break
         valid_words=reduce_allowed_words(valid_words,guess,real_fb)
+        i+=1
     return guess_count
 
 def display_score_ranker(allowed_words,actual_fb,guess,num_of_guesses):
