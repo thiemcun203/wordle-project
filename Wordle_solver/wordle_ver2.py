@@ -3,13 +3,13 @@ import json
 import numpy as np
 
 #open files to get data        
-with open('possible_answers.txt','r') as f:
+with open(r'C:\Users\Admin\wordle-project\Wordle_solver\possible_answers.txt','r') as f:
     POSSIBLE_ANSWERS=list()
     for line in f:
         line=line.rstrip()
         POSSIBLE_ANSWERS.append(line)
         
-with open('word_freq.txt','r') as f:
+with open(r'C:\Users\Admin\wordle-project\Wordle_solver\word_freq.txt','r') as f:
     data=f.read()
     WORD_FREQ=json.loads(data)
 
@@ -305,12 +305,12 @@ def collect_data(allowed_words,possible_words):
     return res
 
 # collect data code 
-#with open('data.txt','a') as f:
-    for game in collect_data(ALLOWED_WORDS,POSSIBLE_ANSWERS[:400]):
+#with open(r'C:\Users\Admin\wordle-project\Wordle_solver\data.txt','a') as f:
+    for game in collect_data(ALLOWED_WORDS,POSSIBLE_ANSWERS[401:]):
         f.write(str(game)+'\n')
 
 def f(x):
-    (w,b)=(0.2334,1.2784)
+    (w,b)=(0.2458,1.4614)
     return w*x+b
 
 def score(allowed_words,guess,word,actual_fb,num_of_guesses):
@@ -328,7 +328,7 @@ def score_ranker(allowed_words,actual_fb,guess,num_of_guesses):
     res = {k:v for k,v in sorted(res.items(),key=lambda x:x[1])}
     return res
 
-def wordlebot_play(allowed_words,answer):
+def wordlebot_score_play(allowed_words,answer):
     valid_words=allowed_words
     win=False
     i=guess_count=0
@@ -407,4 +407,3 @@ def wordlebot_byscore_interface(allowed_words):
         
         i += 1
 
-#wordlebot_byscore_interface(ALLOWED_WORDS)
